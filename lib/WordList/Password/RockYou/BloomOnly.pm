@@ -45,7 +45,7 @@ sub word_exists {
 C<word_exists()> can be used to test a string against the RockYou password
 wordlist (~14.3 million passwords). You can use it with, e.g.
 L<App::PasswordWordListUtils>'s L<exists-in-password-wordlist>. Uses bloom
-filter (0.1% false positive rate).
+filter (bloom size=33M, k=13, false-positve rate=0.01245%).
 
 The other methods like C<each_word()>, C<all_words()>, C<first_word()>,
 C<next_word()> will return empty list of words, because this distribution only
