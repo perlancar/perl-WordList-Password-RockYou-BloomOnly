@@ -24,12 +24,12 @@ sub word_exists {
 
         my $dir;
         eval {
-            $dir = dist_dir('WordList-Password-RockYou-BloomOnly');
+            $dir = File::ShareDir::dist_dir('WordList-Password-RockYou-BloomOnly');
         };
         if ($@) {
             $dir = "share";
         }
-        (-d $dir) or die "Can't find share dir";
+        (-d $dir) or die "Can't find share dir".($@ ? ": $@" : "");
         my $path = "$dir/bloom";
         (-f $path) or die "Can't find bloom filter data file '$path'";
         $bloom = Algorithm::BloomFilter->deserialize(File::Slurper::read_binary($path));
